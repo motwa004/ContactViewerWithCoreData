@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MasterViewController: UITableViewController{
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
-
+    var myList : Array<AnyObject> = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,23 +26,33 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        /*self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
-        }
+        }*/
     }
 
+    override func viewDidAppear(animated: Bool) {
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "List")
+        myList = context.executeFetchRequest(freq, error: nil)!
+        tableView.reloadData()
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     func insertNewObject(sender: AnyObject) {
-        let context = self.fetchedResultsController.managedObjectContext
+      /*  let context = self.fetchedResultsController.managedObjectContext
         let entity = self.fetchedResultsController.fetchRequest.entity!
         let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
              
@@ -57,37 +67,55 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             //println("Unresolved error \(error), \(error.userInfo)")
             abort()
-        }
+        }*/
     }
 
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-            let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
+        if segue.identifier? == "update" {
+            
+            var srow: NSIndexPath = self.tableView.indexPathForSelectedRow()!
+         var selectedItem: NSManagedObject = myList[srow.row] as NSManagedObject
+            
+
+            let IVC: DetailViewController = segue.destinationViewController as DetailViewController
+            
+            IVC.cname = selectedItem.valueForKeyPath("name") as String
+            IVC.ctitle = selectedItem.valueForKeyPath("title") as String
+            IVC.cphone = selectedItem.valueForKeyPath("phone") as String
+            IVC.cemail = selectedItem.valueForKeyPath("email") as String
+            IVC.ctwitterId = selectedItem.valueForKeyPath("twitterId") as String
+            IVC.existingItem = selectedItem
+            
         }
+        
     }
 
     // MARK: - Table View
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections?.count ?? 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
-        return sectionInfo.numberOfObjects
+        
+        return myList.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        self.configureCell(cell, atIndexPath: indexPath)
+        
+        let CellID:NSString = "Cell"
+        
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellID) as UITableViewCell
+        
+        //if let ip = indexPath {
+        var data: NSManagedObject = myList[indexPath.row] as NSManagedObject
+            cell.textLabel?.text = data.valueForKeyPath("name") as String
+            var titl = data.valueForKeyPath("title") as String
+            
+            cell.detailTextLabel?.text = "\(titl)"
+       // }
         return cell
     }
 
@@ -97,29 +125,39 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
         if editingStyle == .Delete {
-            let context = self.fetchedResultsController.managedObjectContext
-            context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject)
+            
+           // if let tv = tableView {
                 
+            context.deleteObject(myList[indexPath.row] as NSManagedObject)
+            
+            myList.removeAtIndex(indexPath.row)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimation.Fade)
+                
+            //}
+        }
             var error: NSError? = nil
             if !context.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                //println("Unresolved error \(error), \(error.userInfo)")
+                
                 abort()
+                
             }
-        }
+        
     }
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel!.text = object.valueForKey("timeStamp")!.description
+       // let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+       // cell.textLabel!.text = object.valueForKey("timeStamp")!.description
     }
 
     // MARK: - Fetched results controller
 
-    var fetchedResultsController: NSFetchedResultsController {
-        if _fetchedResultsController != nil {
+  /*  var fetchedResultsController: NSFetchedResultsController {
+        f _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
         
@@ -198,6 +236,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
          self.tableView.reloadData()
      }
      */
+*/
 
 }
 

@@ -15,6 +15,7 @@
 		DA076E3C1AE09ACD003D65FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA076E3B1AE09ACD003D65FD /* Images.xcassets */; };
 		DA076E3F1AE09ACD003D65FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA076E3D1AE09ACD003D65FD /* LaunchScreen.xib */; };
 		DA076E4B1AE09ACD003D65FD /* ContactViewerWithCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA076E4A1AE09ACD003D65FD /* ContactViewerWithCoreDataTests.swift */; };
+		DAE36DFE1AE0A0F40019CBBF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36DFD1AE0A0F40019CBBF /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		DA076E441AE09ACD003D65FD /* ContactViewerWithCoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactViewerWithCoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA076E491AE09ACD003D65FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA076E4A1AE09ACD003D65FD /* ContactViewerWithCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewerWithCoreDataTests.swift; sourceTree = "<group>"; };
+		DAE36DFD1AE0A0F40019CBBF /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				DA076E2F1AE09ACD003D65FD /* AppDelegate.swift */,
+				DAE36DFD1AE0A0F40019CBBF /* Model.swift */,
 				DA076E341AE09ACD003D65FD /* MasterViewController.swift */,
 				DA076E361AE09ACD003D65FD /* DetailViewController.swift */,
 				DA076E381AE09ACD003D65FD /* Main.storyboard */,
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE36DFE1AE0A0F40019CBBF /* Model.swift in Sources */,
 				DA076E301AE09ACD003D65FD /* AppDelegate.swift in Sources */,
 				DA076E331AE09ACD003D65FD /* ContactViewerWithCoreData.xcdatamodeld in Sources */,
 				DA076E351AE09ACD003D65FD /* MasterViewController.swift in Sources */,
@@ -415,6 +419,7 @@
 				DA076E501AE09ACD003D65FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA076E511AE09ACD003D65FD /* Build configuration list for PBXNativeTarget "ContactViewerWithCoreDataTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +428,7 @@
 				DA076E531AE09ACD003D65FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
