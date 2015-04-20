@@ -25,6 +25,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var txtTwitterId: UITextField!
     
     
+    @IBOutlet weak var imgView: UIImageView!
+    
+    
+    
     var cname: String = ""
     var ctitle: String = ""
     var cphone: String = ""
@@ -44,8 +48,7 @@ class DetailViewController: UIViewController {
         txtPhone.text = cphone
         txtEmail.text = cemail
         txtTwitterId.text = ctwitterId
-        
-        
+        imgView.image = UIImage(named: "ic_action_person")        
     }
         // Do any additional setup after loading the view, typically from a nib.
     
@@ -59,39 +62,63 @@ class DetailViewController: UIViewController {
     
     @IBAction func saveTapped(sender: AnyObject) {
         
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let alert = UIAlertView()
         
-        let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-        
-        let en = NSEntityDescription.entityForName("List", inManagedObjectContext: contxt)
-        
-        if (existingItem != nil) {
+        if (countElements(txtName.text) != 0 || countElements(txtTitle.text) != 0 || countElements(txtPhone.text) != 0 || countElements(txtEmail.text) != 0 || countElements(txtTwitterId.text) != 0)
+        {
             
-            existingItem.setValue(txtName.text as String, forKey: "name")
-            existingItem.setValue(txtTitle.text as String, forKey: "title")
-            existingItem.setValue(txtPhone.text as String, forKey: "phone")
-            existingItem.setValue(txtEmail.text as String, forKey: "email")
-            existingItem.setValue(txtTwitterId.text as String, forKey: "twitterId")
+          if (countElements(txtName.text) != 0)
+           {
+              let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
-        } else {
-            
-        var newItem = Model(entity: en!, insertIntoManagedObjectContext:contxt)
+              let contxt: NSManagedObjectContext = appDel.managedObjectContext!
         
-        newItem.name = txtName.text
-        newItem.title = txtTitle.text
-        newItem.phone = txtPhone.text
-        newItem.email = txtEmail.text
-        newItem.twitterId = txtTwitterId.text
+              let en = NSEntityDescription.entityForName("List", inManagedObjectContext: contxt)
+        
+              if (existingItem != nil) {
             
-        println(newItem)
+                existingItem.setValue(txtName.text as String, forKey: "name")
+                existingItem.setValue(txtTitle.text as String, forKey: "title")
+                existingItem.setValue(txtPhone.text as String, forKey: "phone")
+                existingItem.setValue(txtEmail.text as String, forKey: "email")
+                existingItem.setValue(txtTwitterId.text as String, forKey: "twitterId")
+        
+               } else {
             
+               var newItem = Model(entity: en!, insertIntoManagedObjectContext:contxt)
+        
+               newItem.name = txtName.text
+               newItem.title = txtTitle.text
+               newItem.phone = txtPhone.text
+               newItem.email = txtEmail.text
+               newItem.twitterId = txtTwitterId.text
+            
+               println(newItem)
+            
+              }
+        
+             contxt.save(nil)
+        
+        
+             self.navigationController?.popToRootViewControllerAnimated(true)
+           }
+          else{
+            
+            alert.title = "Name Warning"
+            alert.message = "Enter value for contact name"
+            alert.addButtonWithTitle("Ok")
+            alert.show()            }
         }
-        
-        contxt.save(nil)
-        
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        else {
+
+            alert.title = "Empty Contact Warning"
+            alert.message = "Enter value in at least one text field"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

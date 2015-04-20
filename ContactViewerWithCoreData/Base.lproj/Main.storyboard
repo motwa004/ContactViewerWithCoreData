@@ -32,60 +32,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTy-G8-9yx">
-                                <rect key="frame" x="133" y="241" width="192" height="30"/>
+                                <rect key="frame" x="104" y="223" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtc-EH-8ci">
-                                <rect key="frame" x="133" y="311" width="198" height="30"/>
+                                <rect key="frame" x="104" y="270" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwM-vq-Zwq">
-                                <rect key="frame" x="133" y="366" width="205" height="30"/>
+                                <rect key="frame" x="104" y="320" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="twitterId" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xji-uA-rwl">
-                                <rect key="frame" x="133" y="428" width="205" height="30"/>
+                                <rect key="frame" x="104" y="370" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VsG-mB-REu">
-                                <rect key="frame" x="133" y="181" width="192" height="30"/>
+                                <rect key="frame" x="104" y="172" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMP-bA-k00">
-                                <rect key="frame" x="45" y="190" width="46" height="21"/>
+                                <rect key="frame" x="16" y="181" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-eI-U1I">
-                                <rect key="frame" x="42" y="255" width="33" height="21"/>
+                                <rect key="frame" x="16" y="232" width="33" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epe-Zk-76g">
-                                <rect key="frame" x="45" y="320" width="50" height="21"/>
+                                <rect key="frame" x="16" y="279" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEh-xi-Nbn">
-                                <rect key="frame" x="45" y="375" width="42" height="21"/>
+                                <rect key="frame" x="16" y="329" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TwitterId" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vph-9W-VWo">
-                                <rect key="frame" x="45" y="437" width="69" height="21"/>
+                                <rect key="frame" x="16" y="379" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DH8-8U-QaF">
+                                <rect key="frame" x="16" y="76" width="68" height="68"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -103,6 +106,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imgView" destination="DH8-8U-QaF" id="dC2-N4-1Rj"/>
                         <outlet property="txtEmail" destination="bwM-vq-Zwq" id="4aT-nt-QRM"/>
                         <outlet property="txtName" destination="VsG-mB-REu" id="dA2-wz-aPS"/>
                         <outlet property="txtPhone" destination="dtc-EH-8ci" id="8oc-Dp-3F8"/>
