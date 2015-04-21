@@ -33,8 +33,51 @@ class MasterViewController: UITableViewController{
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "List")
         myList = context.executeFetchRequest(freq, error: nil)!
-        tableView.reloadData()
+        println(myList.count)
         
+        if myList.count == 0
+        {
+         for i in 0...2
+          {
+            let en = NSEntityDescription.entityForName("List", inManagedObjectContext: context)
+            
+            var newItem = Model(entity: en!, insertIntoManagedObjectContext:context)
+            
+                switch i {
+                    
+                 case 0:
+                    
+                    newItem.name = "Malcom"
+                    newItem.title = "Doctor"
+                    newItem.phone = "234-345-4542"
+                    newItem.email = "malcom@hotmail.com"
+                    newItem.twitterId = "sendsmiles"
+                    
+                 case 1:
+                    
+                    newItem.name = "Bekki"
+                    newItem.title = "Instructor"
+                    newItem.phone = "234-999-8008"
+                    newItem.email = "bekki@gmail.com"
+                    newItem.twitterId = "tinymission"
+            
+                default:
+                    
+                    newItem.name = "Andy"
+                    newItem.title = "Instructor"
+                    newItem.phone = "234-543-9898"
+                    newItem.email = "andy@yahoo.com"
+                    newItem.twitterId = "tinymission"
+                }
+                
+               context.save(nil)
+             }
+            
+            
+            myList = context.executeFetchRequest(freq, error: nil)!
+        }
+        
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,10 +92,11 @@ class MasterViewController: UITableViewController{
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
         if segue.identifier? == "update" {
             
             var srow: NSIndexPath = self.tableView.indexPathForSelectedRow()!
-         var selectedItem: NSManagedObject = myList[srow.row] as NSManagedObject
+            var selectedItem: NSManagedObject = myList[srow.row] as NSManagedObject
             
 
             let IVC: DetailViewController = segue.destinationViewController as DetailViewController
