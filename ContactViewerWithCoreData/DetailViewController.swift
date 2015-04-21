@@ -112,7 +112,7 @@ class DetailViewController: UIViewController {
         else {
 
             alert.title = "Empty Contact Warning"
-            alert.message = "Enter value in at least one text field"
+            alert.message = "Contact must have a name"
             alert.addButtonWithTitle("Ok")
             alert.show()
         }

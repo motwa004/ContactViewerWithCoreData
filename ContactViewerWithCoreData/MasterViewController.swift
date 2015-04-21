@@ -25,7 +25,8 @@ class MasterViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            }
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+    }
 
     override func viewDidAppear(animated: Bool) {
         
@@ -132,9 +133,9 @@ class MasterViewController: UITableViewController{
         //if let ip = indexPath {
         var data: NSManagedObject = myList[indexPath.row] as NSManagedObject
             cell.textLabel?.text = data.valueForKeyPath("name") as? String
-            var titl = data.valueForKeyPath("title") as String
+            var title = data.valueForKeyPath("title") as String
             
-            cell.detailTextLabel?.text = "\(titl)"
+            cell.detailTextLabel?.text = "\(title)"
        // }
         return cell
     }
