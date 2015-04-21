@@ -81,12 +81,34 @@ class DetailViewController: UIViewController {
         txtEmail.enabled = true
         txtTwitterId.enabled = true
         titlBar.title = "Edit Detail"
+        btnEdit.hidden = true
 
     }
     @IBAction func cancelTapped(sender: AnyObject) {
         
+        if titlBar.title == "Edit Detail"
+        {
+            txtName.text = cname
+            txtTitle.text = ctitle
+            txtPhone.text = cphone
+            txtEmail.text = cemail
+            txtTwitterId.text = ctwitterId
+            
+            btnSave.enabled = false
+            txtName.enabled = false
+            txtTitle.enabled = false
+            txtPhone.enabled = false
+            txtEmail.enabled = false
+            txtTwitterId.enabled = false
+            btnEdit.hidden = false
+            titlBar.title = "View Detail"
+            
+        }
+        else{
+            
         self.navigationController?.popToRootViewControllerAnimated(true)
-        
+            
+        }
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
