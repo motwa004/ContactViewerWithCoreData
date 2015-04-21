@@ -121,6 +121,7 @@
                         <outlet property="btnEdit" destination="lHg-x8-Lsz" id="njd-da-HHw"/>
                         <outlet property="btnSave" destination="lan-Lx-rRr" id="flK-7J-uw9"/>
                         <outlet property="imgView" destination="DH8-8U-QaF" id="dC2-N4-1Rj"/>
+                        <outlet property="titlBar" destination="mOI-FS-AaM" id="LaM-1b-WbV"/>
                         <outlet property="txtEmail" destination="bwM-vq-Zwq" id="4aT-nt-QRM"/>
                         <outlet property="txtName" destination="VsG-mB-REu" id="dA2-wz-aPS"/>
                         <outlet property="txtPhone" destination="dtc-EH-8ci" id="8oc-Dp-3F8"/>
@@ -188,7 +189,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
+                    <navigationItem key="navigationItem" title="Contact List" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="AFU-Dc-Q49">
                             <connections>
                                 <segue destination="JEX-9P-axG" kind="show" id="8yN-bl-WGy"/>

@@ -31,12 +31,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var btnEdit: UIButton!
     
+    @IBOutlet weak var titlBar: UINavigationItem!
+    
+    
     var cname: String = ""
     var ctitle: String = ""
     var cphone: String = ""
     var cemail: String = ""
     var ctwitterId: String = ""
-    
     var existingItem:NSManagedObject!
 
     
@@ -62,9 +64,10 @@ class DetailViewController: UIViewController {
         txtEmail.enabled = false
         txtTwitterId.enabled = false
         btnEdit.hidden = false
-        
-     
+        titlBar.title = "View Detail"
     }
+    else{
+        titlBar.title = "Add Contact"    }
         
     
     }
@@ -77,6 +80,7 @@ class DetailViewController: UIViewController {
         txtPhone.enabled = true
         txtEmail.enabled = true
         txtTwitterId.enabled = true
+        titlBar.title = "Edit Detail"
 
     }
     @IBAction func cancelTapped(sender: AnyObject) {
