@@ -27,7 +27,9 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var imgView: UIImageView!
     
+    @IBOutlet weak var btnSave: UIBarButtonItem!
     
+    @IBOutlet weak var btnEdit: UIButton!
     
     var cname: String = ""
     var ctitle: String = ""
@@ -36,24 +38,47 @@ class DetailViewController: UIViewController {
     var ctwitterId: String = ""
     
     var existingItem:NSManagedObject!
-    
+
     
    override func viewDidLoad() {
         super.viewDidLoad()
     
-    if (existingItem != nil) {
+    btnEdit.hidden = true
     
+    if (existingItem != nil) {
+     
+        
         txtName.text = cname
         txtTitle.text = ctitle
         txtPhone.text = cphone
         txtEmail.text = cemail
         txtTwitterId.text = ctwitterId
-        imgView.image = UIImage(named: "ic_action_person")        
+        imgView.image = UIImage(named: "ic_action_person")
+        
+        btnSave.enabled = false
+        txtName.enabled = false
+        txtTitle.enabled = false
+        txtPhone.enabled = false
+        txtEmail.enabled = false
+        txtTwitterId.enabled = false
+        btnEdit.hidden = false
+        
+     
     }
-        // Do any additional setup after loading the view, typically from a nib.
+        
     
     }
 
+    @IBAction func editTapped(sender: AnyObject) {
+        
+        btnSave.enabled = true
+        txtName.enabled = true
+        txtTitle.enabled = true
+        txtPhone.enabled = true
+        txtEmail.enabled = true
+        txtTwitterId.enabled = true
+
+    }
     @IBAction func cancelTapped(sender: AnyObject) {
         
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -61,6 +86,8 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
+        
+        
         
         let alert = UIAlertView()
         
