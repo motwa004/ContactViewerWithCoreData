@@ -150,10 +150,28 @@ class DetailViewController: UIViewController {
             
               }
         
-             contxt.save(nil)
+              contxt.save(nil)
         
-        
-             self.navigationController?.popToRootViewControllerAnimated(true)
+            if titlBar.title == "Edit Detail"
+            {
+                btnSave.enabled = false
+                txtName.enabled = false
+                txtTitle.enabled = false
+                txtPhone.enabled = false
+                txtEmail.enabled = false
+                txtTwitterId.enabled = false
+                btnEdit.hidden = false
+                titlBar.title = "View Detail"
+                
+            }
+            else{
+                
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                
+            }
+            
+            
+            
            }
           else{
             
