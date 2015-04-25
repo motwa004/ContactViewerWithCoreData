@@ -163,8 +163,7 @@ class DetailViewController: UIViewController {
                 btnEdit.hidden = false
                 titlBar.title = "View Detail"
                 
-            }
-            else{
+            } else{
                 
                 self.navigationController?.popToRootViewControllerAnimated(true)
                 
@@ -172,15 +171,15 @@ class DetailViewController: UIViewController {
             
             
             
-           }
-          else{
+           } else{
             
             alert.title = "Name Warning"
             alert.message = "Enter value for contact name"
             alert.addButtonWithTitle("Ok")
-            alert.show()            }
+            alert.show()
         }
-        else {
+            
+        } else {
 
             alert.title = "Empty Contact Warning"
             alert.message = "Contact must have a name"

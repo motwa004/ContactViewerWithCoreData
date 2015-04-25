@@ -26,10 +26,6 @@ class MasterViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest(entityName: "List")
@@ -38,15 +34,15 @@ class MasterViewController: UITableViewController{
         
         if myList.count == 0
         {
-         for i in 0...2
-          {
-            let en = NSEntityDescription.entityForName("List", inManagedObjectContext: context)
-            
-            var newItem = Model(entity: en!, insertIntoManagedObjectContext:context)
-            
+            for i in 0...2
+            {
+                let en = NSEntityDescription.entityForName("List", inManagedObjectContext: context)
+                
+                var newItem = Model(entity: en!, insertIntoManagedObjectContext:context)
+                
                 switch i {
                     
-                 case 0:
+                case 0:
                     
                     newItem.name = "Malcom"
                     newItem.title = "Doctor"
@@ -54,14 +50,14 @@ class MasterViewController: UITableViewController{
                     newItem.email = "malcom@hotmail.com"
                     newItem.twitterId = "sendsmiles"
                     
-                 case 1:
+                case 1:
                     
                     newItem.name = "Bekki"
                     newItem.title = "Instructor"
                     newItem.phone = "234-999-8008"
                     newItem.email = "bekki@gmail.com"
                     newItem.twitterId = "tinymission"
-            
+                    
                 default:
                     
                     newItem.name = "Andy"
@@ -71,13 +67,22 @@ class MasterViewController: UITableViewController{
                     newItem.twitterId = "tinymission"
                 }
                 
-               context.save(nil)
-             }
+                context.save(nil)
+            }
             
             
             myList = context.executeFetchRequest(freq, error: nil)!
         }
         
+        tableView.reloadData()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let freq = NSFetchRequest(entityName: "List")
+        myList = context.executeFetchRequest(freq, error: nil)!
         tableView.reloadData()
     }
     
