@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+let context:NSManagedObjectContext = appDel.managedObjectContext!
+let freq = NSFetchRequest(entityName: "List")
+
 class MasterViewController: UITableViewController{
 
     var detailViewController: DetailViewController? = nil
@@ -26,9 +30,7 @@ class MasterViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let freq = NSFetchRequest(entityName: "List")
+
         myList = context.executeFetchRequest(freq, error: nil)!
         println(myList.count)
         
@@ -78,10 +80,7 @@ class MasterViewController: UITableViewController{
     }
 
     override func viewDidAppear(animated: Bool) {
-        
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
-        let freq = NSFetchRequest(entityName: "List")
+
         myList = context.executeFetchRequest(freq, error: nil)!
         tableView.reloadData()
     }
